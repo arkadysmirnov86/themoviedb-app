@@ -13,7 +13,11 @@ class SearchViewModel {
     var errorReceived: VoidClosure?
     var resultReceived: VoidClosure?
     
-    private var dataProvider: DataProviderProtocol = DataProvider()
+    private var dataProvider: DataProviderProtocol
+    
+    init(dataProvider: DataProviderProtocol) {
+        self.dataProvider = dataProvider
+    }
     
     var query: String? {
         didSet {

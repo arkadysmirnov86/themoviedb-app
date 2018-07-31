@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    let viewModel = SearchViewModel()
+    var viewModel: SearchViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +17,12 @@ class SearchViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        viewModel.errorReceived = {
+        self.viewModel = SearchViewModel(dataProvider: DataProvider())
+        viewModel?.errorReceived = {
             [weak self] in
             self?.showError()
         }
-        viewModel.resultReceived = {
+        viewModel?.resultReceived = {
             [weak self] in
             self?.updateUI()
         }
@@ -32,6 +33,7 @@ class SearchViewController: UIViewController {
     }
     
     private func showError() {
-        
+        let alertController = UIAlertController(title: "error", message: "error message", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction.init(title: "ok", style: UIAlertActionStyle.default, handler: nil))
     }
 }
