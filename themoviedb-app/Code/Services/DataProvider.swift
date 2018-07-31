@@ -31,7 +31,7 @@ class DataProvider: DataProviderProtocol {
         }
         
         let task = session.dataTask(with: url) { (data, response, error) in
-            guard error != nil else {
+            guard error == nil else {
                 let error = error ?? Errors.unknownError
                 completionhandler(Result<ResultType>.error(error))
                 return
@@ -55,5 +55,6 @@ class DataProvider: DataProviderProtocol {
 }
 
 private extension String {
+    
     static let endpointFormat = "http://api.themoviedb.org/3/search/movie?api_key=2696829a81b1b5827d515ff121700838&query=%@&page=%d"
 }
