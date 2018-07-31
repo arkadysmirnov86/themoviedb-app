@@ -31,6 +31,9 @@ class DataProvider: DataProviderProtocol {
         }
         
         let task = session.dataTask(with: url) { (data, response, error) in
+            
+            //TODO: redirect current thread task to main queue
+            
             guard error == nil else {
                 let error = error ?? Errors.unknownError
                 completionhandler(Result<ResultType>.error(error))
