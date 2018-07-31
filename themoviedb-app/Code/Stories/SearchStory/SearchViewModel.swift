@@ -10,14 +10,10 @@ import Foundation
 
 class SearchViewModel {
     
-    var errorReceived: VoidClosure?
-    var resultReceived: VoidClosure?
-    
     private var dataProvider: DataProviderProtocol
     
-    init(dataProvider: DataProviderProtocol) {
-        self.dataProvider = dataProvider
-    }
+    var errorReceived: VoidClosure?
+    var resultReceived: VoidClosure?
     
     var query: String? {
         didSet {
@@ -41,9 +37,15 @@ class SearchViewModel {
             resultReceived?()
         }
     }
+    
     private (set) var error: Error? {
         didSet {
             errorReceived?()
         }
+    }
+    
+    
+    init(dataProvider: DataProviderProtocol) {
+        self.dataProvider = dataProvider
     }
 }
