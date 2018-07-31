@@ -14,13 +14,14 @@ class SearchViewModel {
     
     var errorReceived: VoidClosure?
     var resultReceived: VoidClosure?
+    var isLoadingChanged: VoidClosure?
     
     var query: String? {
         didSet {
             guard let query = query else {
                 return
             }
-            
+            isLoading = true
             dataProvider.fetchFilms(query: query, page: 1) { (result) in
                 switch result {
                 case .success(let value):
@@ -34,16 +35,23 @@ class SearchViewModel {
     
     private (set) var result: PageEntity<FilmInfoEnity>? {
         didSet {
+            isLoading = false
             resultReceived?()
         }
     }
     
     private (set) var error: Error? {
         didSet {
+            isLoading = false
             errorReceived?()
         }
     }
     
+    private (set) var isLoading: Bool = false {
+        didSet {
+            isLoadingChanged?()
+        }
+    }
     
     init(dataProvider: DataProviderProtocol) {
         self.dataProvider = dataProvider

@@ -26,6 +26,12 @@ class SearchViewController: UIViewController {
             [weak self] in
             self?.updateUI()
         }
+        
+        viewModel?.isLoadingChanged = {
+            [weak self] in
+            
+        }
+        
     }
     
     private func updateUI() {
