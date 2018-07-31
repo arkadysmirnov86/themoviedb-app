@@ -9,11 +9,12 @@
 import Foundation
 
 protocol DataProviderProtocol {
-    func fetchFilms(successHandler: ([FilmInfoEnity]) -> Void, errorHandler: (Error) -> Void)
+    typealias ResultType = PageEntity<FilmInfoEnity>
+    func fetchFilms(complitionhandler: (Result<ResultType>) -> Void)
 }
 
 class DataProvider: DataProviderProtocol {
-    func fetchFilms(successHandler: ([FilmInfoEnity]) -> Void, errorHandler: (Error) -> Void) {
+    func fetchFilms(complitionhandler: (Result<ResultType>) -> Void) {
         fatalError("method not implemeted")
     }
 }

@@ -1,5 +1,5 @@
 //
-//  FilmInfoEnity.swift
+//  Result.swift
 //  themoviedb-app
 //
 //  Created by Arkady Smirnov on 7/31/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FilmInfoEnity: Decodable {
-    var id: Int
-    var title: String
+enum Result<T> {
+    case success(T)
+    case error(Error)
 }
