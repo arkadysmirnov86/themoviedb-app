@@ -13,6 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet private weak var searchField: UITextField? {
         didSet {
             searchField?.delegate = self
+            searchField?.clearButtonMode = .always
         }
     }
     
@@ -73,8 +74,10 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier) ?? UITableViewCell()
-        cell.imageView?.image = UIImage()
+        
         cell.textLabel?.text = self.viewModel?.history[indexPath.row]
+        cell.imageView?.image = #imageLiteral(resourceName: "icons8-search-2")
+        
         return cell
     }
 }
@@ -90,6 +93,7 @@ extension SearchViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
 }
 
 private extension String {
