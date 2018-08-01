@@ -9,5 +9,13 @@
 import UIKit
 
 class MovieListViewController: UIViewController {
+    var viewModel: MovieListViewModel? {
+        didSet {
+            bindViewModel()
+        }
+    }
     
+    func bindViewModel() {
+        
+    }
 }

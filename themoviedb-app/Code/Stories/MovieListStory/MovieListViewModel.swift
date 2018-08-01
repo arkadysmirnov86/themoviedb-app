@@ -9,12 +9,20 @@
 import Foundation
 
 class MovieListViewModel {
-    
-    var pages: [PageModel<MovieModel>]? {
+    private var dataProvider: DataProviderProtocol
+    private (set) var query: String
+    private (set) var pages: [PageModel<MovieModel>] {
         didSet {
-            
+            pagesChanged?()
         }
     }
     
-    var query: String?
+    var pagesChanged: VoidClosure?
+    
+    
+    init(dataProvider: DataProviderProtocol, query: String, firstPage: PageModel<MovieModel>) {
+        self.dataProvider = dataProvider
+        self.pages = [firstPage]
+        self.query = query
+    }
 }

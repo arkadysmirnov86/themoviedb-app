@@ -20,16 +20,13 @@ class MovieListCoordinator: Coordinator {
         self.dataProvider = dataProvider
         self.query = query
         self.firstPage = firstPage
-        
     }
     
     func start() {
-        let viewModel = MovieListViewModel()
-        viewModel.pages = [firstPage]
-        viewModel.query = query
+        let viewModel = MovieListViewModel(dataProvider: dataProvider, query: query, firstPage: firstPage)
         
         let viewController = self.instantiate(MovieListViewController.self)
-        viewController.title = query
+        viewController.viewModel = viewModel
         navigationController.pushViewController(viewController, animated: true)
     }
     
