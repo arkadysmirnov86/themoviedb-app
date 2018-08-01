@@ -197,9 +197,9 @@
 		A6D8B1EE2110F72300B9A9F7 /* SearchStory */ = {
 			isa = PBXGroup;
 			children = (
-				A6D8B1EB2110F6CF00B9A9F7 /* SearchViewController.swift */,
 				A6D8B1FE21123AC400B9A9F7 /* SearchCoordinator.swift */,
 				A6D8B1EF2110F73700B9A9F7 /* SearchViewModel.swift */,
+				A6D8B1EB2110F6CF00B9A9F7 /* SearchViewController.swift */,
 			);
 			path = SearchStory;
 			sourceTree = "<group>";
