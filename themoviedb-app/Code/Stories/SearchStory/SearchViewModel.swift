@@ -11,10 +11,14 @@ import Foundation
 class SearchViewModel {
     
     private var dataProvider: DataProviderProtocol
+    //TODO: have to be stored in userdefaults
+    private var lastSuccessfulQueries: [String]
     
-    var errorReceived: VoidClosure?
-    var resultReceived: VoidClosure?
+    
+    var errorChanged: VoidClosure?
+    var searchResultChanged: VoidClosure?
     var isLoadingChanged: VoidClosure?
+    var historyChanged: VoidClosure?
     
     var query: String? {
         didSet {
@@ -25,9 +29,10 @@ class SearchViewModel {
             dataProvider.fetchFilms(query: query, page: 1) { (result) in
                 switch result {
                 case .success(let value):
-                        self.result = value
+                    self.result = value
+                    self.updateQueriesHistory(newQuery: query)
                 case .error(let error):
-                        self.error = error
+                    self.error = error
                 }
             }
         }
@@ -36,14 +41,14 @@ class SearchViewModel {
     private (set) var result: PageEntity<FilmInfoEnity>? {
         didSet {
             isLoading = false
-            resultReceived?()
+            searchResultChanged?()
         }
     }
     
     private (set) var error: Error? {
         didSet {
             isLoading = false
-            errorReceived?()
+            errorChanged?()
         }
     }
     
@@ -53,7 +58,25 @@ class SearchViewModel {
         }
     }
     
+    var history: [String] {
+        return lastSuccessfulQueries
+    }
+    
     init(dataProvider: DataProviderProtocol) {
         self.dataProvider = dataProvider
+        lastSuccessfulQueries = []
+    }
+    
+    private func updateQueriesHistory(newQuery: String) {
+        if let existingIndex = lastSuccessfulQueries.index(of: newQuery){
+            lastSuccessfulQueries.remove(at: existingIndex)
+            lastSuccessfulQueries.insert(newQuery, at: 0)
+        } else {
+            lastSuccessfulQueries.insert(newQuery, at: 0)
+            if lastSuccessfulQueries.count > 5 {
+                lastSuccessfulQueries.removeLast()
+            }
+        }
+        self.historyChanged?()
     }
 }

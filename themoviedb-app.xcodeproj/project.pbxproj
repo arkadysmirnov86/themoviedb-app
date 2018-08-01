@@ -128,6 +128,7 @@
 				A6D8B1E02110E50400B9A9F7 /* Entites */,
 				A6D8B1DD2110E4C700B9A9F7 /* Services */,
 				A6D8B1BA2110E34100B9A9F7 /* AppDelegate.swift */,
+				A6D8B1FD21122D3900B9A9F7 /* Models */,
 				A6D8B1C32110E34200B9A9F7 /* LaunchScreen.storyboard */,
 				A6D8B1BC2110E34100B9A9F7 /* ViewController.swift */,
 				A6D8B1ED2110F6FD00B9A9F7 /* Stories */,
@@ -209,6 +210,13 @@
 				A6D8B1F92110FE9B00B9A9F7 /* DummyDataProvider.swift */,
 			);
 			path = TestsSupportingClasses;
+			sourceTree = "<group>";
+		};
+		A6D8B1FD21122D3900B9A9F7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -18,11 +18,11 @@ class SearchViewController: UIViewController {
     
     private func bindViewModel() {
         self.viewModel = SearchViewModel(dataProvider: DataProvider())
-        viewModel?.errorReceived = {
+        viewModel?.errorChanged = {
             [weak self] in
             self?.showError()
         }
-        viewModel?.resultReceived = {
+        viewModel?.searchResultChanged = {
             [weak self] in
             self?.updateUI()
         }
