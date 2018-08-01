@@ -10,6 +10,7 @@ import Foundation
 
 class MovieListViewModel {
     private var dataProvider: DataProviderProtocol
+    private var isLastPageLoaded: Bool = false
     private (set) var query: String
     private (set) var pages: [PageModel<MovieModel>] {
         didSet {
@@ -34,9 +35,13 @@ class MovieListViewModel {
     var errorChanged: VoidClosure?
     
     func fetchNextPage() {
+        
+        guard !isLastPageLoaded else { return }
+        
         dataProvider.fetchMovies(query: self.query, page: pages.count) { (result) in
             switch result {
             case .success(let newPageEntity):
+                self.isLastPageLoaded = newPageEntity.page == newPageEntity.total_pages
                 self.pages.append(newPageEntity.asModel)
                 break
             case .error(let error):
