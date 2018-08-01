@@ -12,8 +12,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet private weak var searchField: UITextField? {
         didSet {
-            searchField?.delegate = self
-            searchField?.clearButtonMode = .always
+            configureSearchField()
         }
     }
     
@@ -22,6 +21,7 @@ class SearchViewController: UIViewController {
             configureTableView()
         }
     }
+    
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView? {
         didSet {
             activityIndicator?.stopAnimating()
@@ -63,7 +63,13 @@ class SearchViewController: UIViewController {
     private func configureTableView() {
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: .cellReuseIdentifier)
         tableView?.dataSource = self
+        tableView?.delegate = self
         tableView?.isHidden = true
+    }
+    
+    private func configureSearchField() {
+        searchField?.delegate = self
+        searchField?.clearButtonMode = .always
     }
 }
 
@@ -79,6 +85,18 @@ extension SearchViewController: UITableViewDataSource {
         cell.imageView?.image = #imageLiteral(resourceName: "icons8-search-2")
         
         return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        searchField?.resignFirstResponder()
+        let cell = tableView.cellForRow(at: indexPath)
+        if let query = cell?.textLabel?.text {
+            self.viewModel?.query = query
+            self.searchField?.text = query
+        }
+        cell?.isSelected = false
     }
 }
 
