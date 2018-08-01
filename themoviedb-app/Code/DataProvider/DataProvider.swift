@@ -8,12 +8,6 @@
 
 import Foundation
 
-protocol DataProviderProtocol {
-    typealias ResultType = PageEntity<FilmInfoEnity>
-    
-    func fetchFilms(query: String, page: Int, completionhandler: @escaping (Result<ResultType>) -> Void)
-}
-
 class DataProvider: DataProviderProtocol {
     typealias ResultType = PageEntity<FilmInfoEnity>
     

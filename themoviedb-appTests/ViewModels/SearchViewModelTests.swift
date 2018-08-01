@@ -18,11 +18,11 @@ class SearchViewModelTests: XCTestCase {
         
         let viewModel = SearchViewModel(dataProvider: DummyDataProvider())
         
-        viewModel.searchResultChanged = {
-            resultExpectation.fulfill()
-        }
-        
-        viewModel.query = "success"
+//        viewModel.searchResultChanged = {
+//            resultExpectation.fulfill()
+//        }
+//        
+//        viewModel.query = "success"
         
         wait(for: [resultExpectation], timeout: 2)
         
@@ -34,12 +34,12 @@ class SearchViewModelTests: XCTestCase {
         
         let viewModel = SearchViewModel(dataProvider: DummyDataProvider())
         
-        viewModel.searchResultChanged = {
-            [weak viewModel] in
-            if let _ = viewModel?.result {
-                resultExpectation.fulfill()
-            }
-        }
+//        viewModel.searchResultChanged = {
+//            [weak viewModel] in
+////            if let _ = viewModel?.result {
+////                resultExpectation.fulfill()
+////            }
+//        }
         
         viewModel.query = "success"
         

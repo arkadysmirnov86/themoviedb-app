@@ -16,7 +16,6 @@ class SearchViewModel {
     
     
     var errorChanged: VoidClosure?
-    var searchResultChanged: VoidClosure?
     var isLoadingChanged: VoidClosure?
     var historyChanged: VoidClosure?
     
@@ -30,19 +29,11 @@ class SearchViewModel {
                 switch result {
                 case .success(let value):
                     self.updateQueriesHistory(newQuery: query)
-                    self.result = value
-                    self.coordinatorDelegate?.showSearchResult()
+                    self.coordinatorDelegate?.showSearchResult(firstPage: value.asModel)
                 case .error(let error):
                     self.error = error
                 }
             }
-        }
-    }
-    
-    private (set) var result: PageEntity<FilmInfoEnity>? {
-        didSet {
-            isLoading = false
-            searchResultChanged?()
         }
     }
     

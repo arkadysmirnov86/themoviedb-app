@@ -12,3 +12,9 @@ struct FilmInfoEnity: Decodable {
     var id: Int
     var title: String
 }
+
+extension FilmInfoEnity {
+    var asModel: FilmModel {
+        return FilmModel(poster: "", name: title, releaseDate: Date(), overview: "")
+    }
+}

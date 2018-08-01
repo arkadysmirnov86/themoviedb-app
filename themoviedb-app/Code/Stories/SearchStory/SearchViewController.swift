@@ -21,10 +21,6 @@ class SearchViewController: UIViewController {
             [weak self] in
             self?.showError()
         }
-        viewModel?.searchResultChanged = {
-            [weak self] in
-            self?.updateUI()
-        }
         
         viewModel?.isLoadingChanged = {
             [weak self] in
