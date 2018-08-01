@@ -17,8 +17,34 @@ class MovieListViewModel {
         }
     }
     
-    var pagesChanged: VoidClosure?
+    private (set) var isLoading: Bool = false {
+        didSet {
+            isLoadingChanged?()
+        }
+    }
     
+    private (set) var error: Error? {
+        didSet {
+            errorChanged?()
+        }
+    }
+    
+    var pagesChanged: VoidClosure?
+    var isLoadingChanged: VoidClosure?
+    var errorChanged: VoidClosure?
+    
+    func fetchNextPage() {
+        dataProvider.fetchMovies(query: self.query, page: pages.count) { (result) in
+            switch result {
+            case .success(let newPageEntity):
+                self.pages.append(newPageEntity.asModel)
+                break
+            case .error(let error):
+                self.error = error
+                break
+            }
+        }
+    }
     
     init(dataProvider: DataProviderProtocol, query: String, firstPage: PageModel<MovieModel>) {
         self.dataProvider = dataProvider
