@@ -29,7 +29,7 @@ class SearchViewModel {
                 switch result {
                 case .success(let value):
                     self.updateQueriesHistory(newQuery: query)
-                    self.coordinatorDelegate?.showSearchResult(firstPage: value.asModel)
+                    self.coordinatorDelegate?.showSearchResult(query: query, firstPage: value.asModel)
                 case .error(let error):
                     self.error = error
                 }

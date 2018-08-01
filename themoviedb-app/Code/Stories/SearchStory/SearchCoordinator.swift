@@ -29,12 +29,13 @@ class SearchCoordinator: Coordinator {
 }
 
 protocol SearchCoordinatorDelegate {
-    func showSearchResult(firstPage: PageModel<MovieModel>)
+    func showSearchResult(query: String, firstPage: PageModel<MovieModel>)
 }
 
 extension SearchCoordinator: SearchCoordinatorDelegate {
-    func showSearchResult(firstPage: PageModel<MovieModel>) {
-        
+    func showSearchResult(query: String, firstPage: PageModel<MovieModel>) {
+        let movieListCoordinator = MovieListCoordinator(navigationController: self.navigationController, dataProvider: self.dataProvider, query: query, firstPage: firstPage)
+        movieListCoordinator.start()
     }
 }
 
