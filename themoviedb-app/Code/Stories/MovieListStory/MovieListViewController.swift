@@ -16,6 +16,30 @@ class MovieListViewController: UIViewController {
     }
     
     func bindViewModel() {
+        viewModel?.errorChanged = {
+            [weak self] in
+            self?.showError()
+        }
+        
+        viewModel?.pagesChanged = {
+            [weak self] in
+            self?.updateTable()
+        }
+        viewModel?.isLoadingChanged = {
+            [weak self] in
+            self?.showActivityIndicator()
+        }
+    }
+    
+    private func showError() {
+        
+    }
+    
+    private func updateTable() {
+        
+    }
+    
+    private func showActivityIndicator() {
         
     }
 }
