@@ -28,19 +28,29 @@
                                 <rect key="frame" x="16" y="74" width="343" height="581"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pI0-lT-iqh">
+                                <rect key="frame" x="177.5" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lzI-Rb-v9e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2kJ-8n-t1D"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lzI-Rb-v9e" secondAttribute="bottom" constant="12" id="A6z-Gb-gVR"/>
+                            <constraint firstItem="pI0-lT-iqh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="B6P-AV-SBK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hU5-gk-xXr" secondAttribute="trailing" constant="16" id="RJA-RL-HBg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lzI-Rb-v9e" secondAttribute="trailing" constant="16" id="RdT-u4-tBd"/>
                             <constraint firstItem="hU5-gk-xXr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="TXH-fb-M3S"/>
+                            <constraint firstItem="pI0-lT-iqh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YX5-cF-c9k"/>
                             <constraint firstItem="hU5-gk-xXr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="bba-HN-z1B"/>
                             <constraint firstItem="lzI-Rb-v9e" firstAttribute="top" secondItem="hU5-gk-xXr" secondAttribute="bottom" constant="12" id="fxq-LR-Ckv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="pI0-lT-iqh" id="gbM-ZF-H13"/>
+                        <outlet property="searchField" destination="hU5-gk-xXr" id="Cji-mo-K2w"/>
+                        <outlet property="tableView" destination="lzI-Rb-v9e" id="RB0-A5-nRh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,13 +12,18 @@ class SearchViewController: UIViewController {
     
     @IBOutlet private weak var searchField: UITextField? {
         didSet {
-         
+            searchField?.delegate = self
         }
     }
     
     @IBOutlet private weak var tableView: UITableView? {
         didSet {
             configureTableView()
+        }
+    }
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView? {
+        didSet {
+            activityIndicator?.stopAnimating()
         }
     }
     
@@ -36,7 +41,15 @@ class SearchViewController: UIViewController {
         
         viewModel?.isLoadingChanged = {
             [weak self] in
-            
+            if self?.viewModel?.isLoading ?? false {
+                self?.activityIndicator?.startAnimating()
+            } else {
+                self?.activityIndicator?.stopAnimating()
+            }
+        }
+        viewModel?.historyChanged = {
+            [weak self] in
+            self?.tableView?.reloadData()
         }
         
     }
@@ -49,6 +62,7 @@ class SearchViewController: UIViewController {
     private func configureTableView() {
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: .cellReuseIdentifier)
         tableView?.dataSource = self
+        tableView?.isHidden = true
     }
 }
 
@@ -62,6 +76,19 @@ extension SearchViewController: UITableViewDataSource {
         cell.imageView?.image = UIImage()
         cell.textLabel?.text = self.viewModel?.history[indexPath.row]
         return cell
+    }
+}
+
+extension SearchViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        tableView?.isHidden = false
+        tableView?.reloadData()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.viewModel?.query = textField.text
+        textField.resignFirstResponder()
+        return true
     }
 }
 

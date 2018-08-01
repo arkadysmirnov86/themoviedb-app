@@ -33,13 +33,13 @@ class SearchViewModel {
                 case .error(let error):
                     self.error = error
                 }
+                self.isLoading = false
             }
         }
     }
     
     private (set) var error: Error? {
         didSet {
-            isLoading = false
             errorChanged?()
         }
     }
@@ -58,7 +58,7 @@ class SearchViewModel {
     
     init(dataProvider: DataProviderProtocol) {
         self.dataProvider = dataProvider
-        lastSuccessfulQueries = []
+        lastSuccessfulQueries = ["test", "test2", "test3"]
     }
     
     private func updateQueriesHistory(newQuery: String) {
