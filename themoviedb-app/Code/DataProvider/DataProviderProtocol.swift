@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DataProviderProtocol {
-    typealias ResultType = PageEntity<FilmInfoEnity>
+    typealias ResultType = PageEntity<MovieEnity>
     
-    func fetchFilms(query: String, page: Int, completionhandler: @escaping (Result<ResultType>) -> Void)
+    func fetchMovies(query: String, page: Int, completionhandler: @escaping (Result<ResultType>) -> Void)
 }

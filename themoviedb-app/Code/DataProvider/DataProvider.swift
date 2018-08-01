@@ -9,14 +9,14 @@
 import Foundation
 
 class DataProvider: DataProviderProtocol {
-    typealias ResultType = PageEntity<FilmInfoEnity>
+    typealias ResultType = PageEntity<MovieEnity>
     
     enum Errors: Error {
         case unknownError
         case invalidParams
         case dataIsEmpty
     }
-    func fetchFilms(query: String, page: Int, completionhandler: @escaping (Result<ResultType>) -> Void) {
+    func fetchMovies(query: String, page: Int, completionhandler: @escaping (Result<ResultType>) -> Void) {
         let session = URLSession.shared
         
         guard let url = URL(string: String(format: .endpointFormat, query, page)) else {

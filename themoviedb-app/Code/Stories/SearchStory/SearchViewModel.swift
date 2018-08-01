@@ -25,7 +25,7 @@ class SearchViewModel {
                 return
             }
             isLoading = true
-            dataProvider.fetchFilms(query: query, page: 1) { (result) in
+            dataProvider.fetchMovies(query: query, page: 1) { (result) in
                 switch result {
                 case .success(let value):
                     self.updateQueriesHistory(newQuery: query)

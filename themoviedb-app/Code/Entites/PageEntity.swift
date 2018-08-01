@@ -15,8 +15,8 @@ struct PageEntity<T: Decodable>: Decodable {
     var results: Array<T>?
 }
 
-extension PageEntity where T == FilmInfoEnity {
-    var asModel: PageModel<FilmModel> {
+extension PageEntity where T == MovieEnity {
+    var asModel: PageModel<MovieModel> {
         return PageModel(page: self.page, totalPages: self.total_pages, items: results?.map { $0.asModel })
     }
 }

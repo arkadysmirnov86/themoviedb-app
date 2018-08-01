@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct FilmInfoEnity: Decodable {
+struct MovieEnity: Decodable {
     var id: Int
     var title: String
 }
 
-extension FilmInfoEnity {
-    var asModel: FilmModel {
-        return FilmModel(poster: "", name: title, releaseDate: Date(), overview: "")
+extension MovieEnity {
+    var asModel: MovieModel {
+        return MovieModel(poster: "", name: title, releaseDate: Date(), overview: "")
     }
 }

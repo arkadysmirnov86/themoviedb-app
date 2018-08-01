@@ -1,5 +1,5 @@
 //
-//  FilmModel.swift
+//  MovieModel.swift
 //  themoviedb-app
 //
 //  Created by Arkady Smirnov on 8/1/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FilmModel {
+struct MovieModel {
     var poster: String
     var name: String
     var releaseDate: Date

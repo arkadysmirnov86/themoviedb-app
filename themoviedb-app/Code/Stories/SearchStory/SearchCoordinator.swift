@@ -29,11 +29,11 @@ class SearchCoordinator: Coordinator {
 }
 
 protocol SearchCoordinatorDelegate {
-    func showSearchResult(firstPage: PageModel<FilmModel>)
+    func showSearchResult(firstPage: PageModel<MovieModel>)
 }
 
 extension SearchCoordinator: SearchCoordinatorDelegate {
-    func showSearchResult(firstPage: PageModel<FilmModel>) {
+    func showSearchResult(firstPage: PageModel<MovieModel>) {
         
     }
 }
