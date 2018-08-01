@@ -36,20 +36,28 @@ class DataProvider: DataProviderProtocol {
             
             guard error == nil else {
                 let error = error ?? Errors.unknownError
-                completionhandler(Result<ResultType>.error(error))
+                DispatchQueue.main.async {
+                    completionhandler(Result<ResultType>.error(error))
+                }
                 return
             }
             
             guard let data = data else {
-                completionhandler(Result<ResultType>.error(Errors.dataIsEmpty))
+                DispatchQueue.main.async {
+                    completionhandler(Result<ResultType>.error(Errors.dataIsEmpty))
+                }
                 return
             }
             
             do {
                 let value = try JSONDecoder.init().decode(ResultType.self, from: data)
-                completionhandler(Result<ResultType>.success(value))
+                DispatchQueue.main.async {
+                    completionhandler(Result<ResultType>.success(value))
+                }
             } catch {
-                completionhandler(Result<ResultType>.error(error))
+                DispatchQueue.main.async {
+                    completionhandler(Result<ResultType>.error(error))
+                }
             }
         }
         

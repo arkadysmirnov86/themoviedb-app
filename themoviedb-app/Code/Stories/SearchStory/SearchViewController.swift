@@ -9,15 +9,14 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    var viewModel: SearchViewModel?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bindViewModel()
+    var viewModel: SearchViewModel? {
+        didSet {
+            bindViewModel()
+        }
     }
     
     private func bindViewModel() {
-        self.viewModel = SearchViewModel(dataProvider: DataProvider())
         viewModel?.errorChanged = {
             [weak self] in
             self?.showError()

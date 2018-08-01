@@ -14,8 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        getStart()
         return true
+    }
+    
+    func getStart() {
+        window = UIWindow()
+        let navigationController = UINavigationController()
+        let dataProvider = DataProvider()
+        self.window?.rootViewController = navigationController
+        let searchCoordinator = SearchCoordinator(navigationController: navigationController, dataProvider: dataProvider)
+        searchCoordinator.start()
+        window?.makeKeyAndVisible()
     }
 
 }

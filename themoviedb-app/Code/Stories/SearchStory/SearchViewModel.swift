@@ -29,8 +29,9 @@ class SearchViewModel {
             dataProvider.fetchFilms(query: query, page: 1) { (result) in
                 switch result {
                 case .success(let value):
-                    self.result = value
                     self.updateQueriesHistory(newQuery: query)
+                    self.result = value
+                    self.coordinatorDelegate?.showSearchResult()
                 case .error(let error):
                     self.error = error
                 }
@@ -61,6 +62,8 @@ class SearchViewModel {
     var history: [String] {
         return lastSuccessfulQueries
     }
+    
+    var coordinatorDelegate: SearchCoordinatorDelegate?
     
     init(dataProvider: DataProviderProtocol) {
         self.dataProvider = dataProvider

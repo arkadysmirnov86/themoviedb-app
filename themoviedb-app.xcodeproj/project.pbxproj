@@ -22,6 +22,8 @@
 		A6D8B1F22110FA5900B9A9F7 /* VoidClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8B1F12110FA5900B9A9F7 /* VoidClosure.swift */; };
 		A6D8B1F62110FE5700B9A9F7 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8B1F52110FE5700B9A9F7 /* SearchViewModelTests.swift */; };
 		A6D8B1FA2110FE9B00B9A9F7 /* DummyDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8B1F92110FE9B00B9A9F7 /* DummyDataProvider.swift */; };
+		A6D8B1FF21123AC400B9A9F7 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8B1FE21123AC400B9A9F7 /* SearchCoordinator.swift */; };
+		A6D8B20221123B0900B9A9F7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D8B20121123B0900B9A9F7 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		A6D8B1F12110FA5900B9A9F7 /* VoidClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidClosure.swift; sourceTree = "<group>"; };
 		A6D8B1F52110FE5700B9A9F7 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		A6D8B1F92110FE9B00B9A9F7 /* DummyDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataProvider.swift; sourceTree = "<group>"; };
+		A6D8B1FE21123AC400B9A9F7 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		A6D8B20121123B0900B9A9F7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,10 +128,11 @@
 		A6D8B1DB2110E3D400B9A9F7 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				A6D8B1BA2110E34100B9A9F7 /* AppDelegate.swift */,
+				A6D8B20021123AFC00B9A9F7 /* Base */,
 				A6D8B1E52110E90A00B9A9F7 /* Utils */,
 				A6D8B1E02110E50400B9A9F7 /* Entites */,
 				A6D8B1DD2110E4C700B9A9F7 /* Services */,
-				A6D8B1BA2110E34100B9A9F7 /* AppDelegate.swift */,
 				A6D8B1FD21122D3900B9A9F7 /* Models */,
 				A6D8B1C32110E34200B9A9F7 /* LaunchScreen.storyboard */,
 				A6D8B1BC2110E34100B9A9F7 /* ViewController.swift */,
@@ -191,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				A6D8B1EB2110F6CF00B9A9F7 /* SearchViewController.swift */,
+				A6D8B1FE21123AC400B9A9F7 /* SearchCoordinator.swift */,
 				A6D8B1EF2110F73700B9A9F7 /* SearchViewModel.swift */,
 			);
 			path = SearchStory;
@@ -217,6 +223,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A6D8B20021123AFC00B9A9F7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A6D8B20121123B0900B9A9F7 /* Coordinator.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +340,8 @@
 				A6D8B1E42110E6DB00B9A9F7 /* PageEntity.swift in Sources */,
 				A6D8B1BD2110E34100B9A9F7 /* ViewController.swift in Sources */,
 				A6D8B1BB2110E34100B9A9F7 /* AppDelegate.swift in Sources */,
+				A6D8B20221123B0900B9A9F7 /* Coordinator.swift in Sources */,
+				A6D8B1FF21123AC400B9A9F7 /* SearchCoordinator.swift in Sources */,
 				A6D8B1E22110E53A00B9A9F7 /* FilmInfoEnity.swift in Sources */,
 				A6D8B1F22110FA5900B9A9F7 /* VoidClosure.swift in Sources */,
 				A6D8B1DF2110E4E800B9A9F7 /* DataProvider.swift in Sources */,
